@@ -1,22 +1,29 @@
+#include <stddef.h>
 #include<stdio.h>
 #include<CUnit/Basic.h>
 #include<CUnit/CUnit.h>
-#include"example.h"
+#include <string.h>
+#include"../src/node.h"
 
-int init_suite1 () {
-    printf("Starting suite\n");
+static FILE* TEST_FILE;
 
-    return 0;
-}
-
-int clean_suite1 () {
-    printf("\nEnding suite\n");
+int init_bin_node_suite () {
+    printf("Starting bin_node suite\n");
 
     return 0;
 }
 
-void test_maxi() {
-    CU_ASSERT_EQUAL(maxi(1,2), 2);
+int clean_bin_node_suite () {
+    printf("\nEnding bin_node suite\n");
+
+    return 0;
+}
+
+void test_node_prints_value() {
+    bin_node n = { 5 };
+    int returned_value = get_node_value(&n);
+
+    CU_ASSERT_EQUAL(returned_value, 5);
 }
 
 int main() {
@@ -27,14 +34,14 @@ int main() {
       return CU_get_error();
 
    /* add a suite to the registry */
-   pSuite = CU_add_suite("Suite_1", init_suite1, clean_suite1);
+   pSuite = CU_add_suite("Suite_1", init_bin_node_suite, clean_bin_node_suite);
    if (NULL == pSuite) {
       CU_cleanup_registry();
       return CU_get_error();
    }
 
    /* add the tests to the suite */
-   if ((NULL == CU_add_test(pSuite, "test maxi", test_maxi)))
+   if ((NULL == CU_add_test(pSuite, "test_node_prints_value", test_node_prints_value)))
    {
       CU_cleanup_registry();
       return CU_get_error();

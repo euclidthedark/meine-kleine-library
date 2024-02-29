@@ -1,9 +1,10 @@
 default:
-	gcc main.c example.c -o main
+	gcc -Wall main.c ./src/node.c -o main
 	./main
+	rm ./main
 
 test:
-	gcc test.c example.c -o test -lcunit
+	gcc ./tests/test.c ./src/node.c -o test -lcunit
 	./test
 	rm ./test
 
