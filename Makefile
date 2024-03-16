@@ -4,7 +4,7 @@ default:
 	rm ./main
 
 test:
-	gcc ./tests/test.c ./src/node.c -o test -lcunit
+	gcc ./tests/linked_list.c ./src/linked_list.c -o test -lcunit
 	./test
 	rm ./test
 
