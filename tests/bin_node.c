@@ -1,11 +1,12 @@
-#include <stddef.h>
+#include<stddef.h>
+#include<stdlib.h>
 #include<stdio.h>
 #include<CUnit/Basic.h>
 #include<CUnit/CUnit.h>
 #include <string.h>
-#include"../src/linked_list_node.h"
+#include"../src/node/node.h"
 
-static int EXPECTED_BIN_NODE_VALUE = 5;
+static int EXPECTED_BIN_NODE_VALUE = 1;
 
 int init_bin_node_suite () {
     printf("\nStarting bin_node suite\n");
@@ -19,11 +20,10 @@ int clean_bin_node_suite () {
     return 0;
 }
 
-void test_node_prints_value() {
-    bin_node n = { 5 };
-    int returned_value = get_node_value(&n);
-
-    CU_ASSERT_EQUAL(returned_value, EXPECTED_BIN_NODE_VALUE);
+void it_inits_bin_node() {
+    BinNode *node_to_test = init_bin_node(EXPECTED_BIN_NODE_VALUE);
+    CU_ASSERT_EQUAL(node_to_test->value, EXPECTED_BIN_NODE_VALUE);
+    free(node_to_test);
 }
 
 int main() {
@@ -41,7 +41,7 @@ int main() {
    }
 
    /* add the tests to the suite */
-   if ((NULL == CU_add_test(pSuite, "test_node_prints_value", test_node_prints_value)))
+   if ((NULL == CU_add_test(pSuite, "it_inits_bin_node", it_inits_bin_node)))
    {
       CU_cleanup_registry();
       return CU_get_error();
