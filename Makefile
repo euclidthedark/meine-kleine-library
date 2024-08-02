@@ -1,6 +1,6 @@
 default:
-	gcc -Wall ./src/main.c ./src/node/node.c ./src/linked_list/linked_list.c -o main
-	./main
+	gcc -Wall ./src/main.c ./src/node/node.c ./src/linked_list/linked_list.c -o ./bin/main
+	./bin/main
 
 test:
 	gcc ./tests/bin_node.c ./src/node/node.c -o ./tests/bin_node -lcunit
