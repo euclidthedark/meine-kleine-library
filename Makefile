@@ -6,7 +6,7 @@ default:
 
 run_test:
 	# create a script to compile the whole test directory
-	gcc -Wall ./test/test.c ./src/node/node.c ./test/node/node_test.c $(UNITY) -o ./test/testblah
+	gcc -Wall ./test/test.c ./src/node/node.c ./src/linked_list/linked_list.c ./test/node/node_test.c ./test/linked_list/linked_list_test.c $(UNITY) -o ./test/testblah
 	./test/testblah
 
 install_c_unit:
